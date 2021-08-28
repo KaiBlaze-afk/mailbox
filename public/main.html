@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+    width: 100vw;
+    background-image: url(forest.png);
+}
+#container{
+    max-width: 755px;
+    margin-top: 50px;
+    margin: 5px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+}
+#output1{
+    border: 2px solid grey;
+    max-height: 280px;
+    overflow-y: auto;
+    border-radius: 40px;
+    backdrop-filter: blur(20px);
+    font-size: 20px;
+}
+#output2{
+    border: 2px solid grey;
+    max-height: 280px;
+    overflow-y: auto;
+    margin-top: 20px;
+    border-radius: 40px;
+    backdrop-filter: blur(8px);
+    font-size: 20px;
+}
+#intro{
+    font-size: 40px;
+    color: cyan;
+}
+#reply{
+    font-size: 40px;
+    color: lime;
+}
+#sender{
+    position: fixed;
+    width: 100vw;
+    bottom: 32px;
+    height: 25px;
+}
+#message{
+    height: 40px;
+    width: 270px;
+    margin-left: 5px;
+    border-radius: 50px;
+    padding:0px 8px;
+    background-color: transparent;
+    font-size: 18px;
+    color: white;
+}
+#message:focus{
+    outline: none;
+    background-color: rgb(65, 0, 0);
+}
+#share{
+    float: right;
+    margin-top: 1px;
+    margin-right: 14px;
+    height: 43px;
+}
+#mail1{
+    color: white;
+    background-color: rgba(240, 47, 47, 0.432);
+    padding: 20px;
+}
+#mail2{
+    color: white;
+    background-color: rgba(0, 129, 32, 0.404);
+    padding: 20px;
+}
+#msg2, #msg1{
+    font-family: 'Courier New', monospace;
+}
+@media screen and (min-width:768px){
+    #container{
+        max-width: 50%;
+        text-align: left;
+        margin: auto;
+    }
+    #share{
+        margin: auto;
+    }
+    #container{
+        text-align: left;
+    }
+    #message{
+        width: 48%;
+    }
+    #output1, #output2{
+        text-align: center;
+    }
+}
+    </style>
+    <title>Mail Box</title>
+</head>
+<body>
+    <div id="container">
+        <div id="output1"><div id="intro">MESSAGE</div>
+           <div id="mail1"><pre id="msg1"></pre></div>
+        </div>
+        <div id="output2"><div id="reply">REPLY</div>
+          <div id="mail2"><pre id="msg2"></pre> </div>
+        </div>
+        <div>
+            <form id="sender" action="/main" method="GET">
+            <input name="message" type="text" id="message" autocomplete="off" autofocus placeholder="Enter Your Message..">
+            <input type="image" src="send.png" id="share"></input>
+            </form>
+        </div>
+    </div>
+    <script>
+        fetch('message.txt')
+  .then(response => response.text())
+  .then(text => document.getElementById('msg1').innerHTML = text)
+  fetch('reply.txt')
+  .then(response => response.text())
+  .then(text => document.getElementById('msg2').innerHTML = text)
+    </script>
+</body>
+</html>
