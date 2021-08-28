@@ -12,6 +12,20 @@
     width: 100vw;
     background-image: url(forest.png);
 }
+#refresh{
+    font-size: 30px;
+    height: 40px;
+    width: 40px;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    border-radius: 50px;
+    z-index: 1000;
+    text-align: center;
+    top: 50%;
+    right: 1%;
+    text-decoration: none;
+    color: blue;
+}
 #container{
     max-width: 755px;
     margin-top: 50px;
@@ -105,13 +119,13 @@
     </style>
     <title>Mail Box</title>
 </head>
-<body>
+<body><a href="/main" id="refresh">&#8635</a>
     <div id="container">
         <div id="output1"><div id="intro">MESSAGE</div>
-           <div id="mail1"><pre id="msg1"></pre></div>
+           <div id="mail1"></div>
         </div>
         <div id="output2"><div id="reply">REPLY</div>
-          <div id="mail2"><pre id="msg2"></pre> </div>
+          <div id="mail2"></div>
         </div>
         <div>
             <form id="sender" action="/main" method="GET">
@@ -123,10 +137,10 @@
     <script>
         fetch('message.txt')
   .then(response => response.text())
-  .then(text => document.getElementById('msg1').innerHTML = text)
+  .then(text => document.getElementById('mail1').innerHTML = text)
   fetch('reply.txt')
   .then(response => response.text())
-  .then(text => document.getElementById('msg2').innerHTML = text)
+  .then(text => document.getElementById('mail2').innerHTML = text)
     </script>
 </body>
 </html>
