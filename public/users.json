@@ -5,12 +5,12 @@
             "password":"admin"
         },
         {
-            "name":"Adarsh",
-            "password":"dranzer1"
+            "name":"abcd",
+            "password":"1234"
         },
         {
-            "name":"Shweta",
-            "password":"Lovebirds"
+            "name":"xyz",
+            "password":"abcd"
         }
     ]
 }
